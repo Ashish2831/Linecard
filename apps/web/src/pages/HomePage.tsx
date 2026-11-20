@@ -57,7 +57,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {loading && <Loading label="Loading catalogue…" />}
+      {loading && <Loading label="Loading catalogue…" variant="home" />}
       {error && <ErrorText message={error} />}
 
       {!loading && !error && (

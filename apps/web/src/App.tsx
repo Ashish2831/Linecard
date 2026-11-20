@@ -18,7 +18,7 @@ export default function App() {
     return (
       <div className="app-shell">
         <main>
-          <Loading label="Starting Linecard…" />
+          <Loading label="Starting Linecard…" variant="boot" />
         </main>
       </div>
     );

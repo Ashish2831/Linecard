@@ -104,8 +104,11 @@ img {
 }
 
 @keyframes shimmer {
-  to {
-    background-position: -200% 0;
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
   }
 }
 
@@ -667,6 +670,7 @@ main {
 }
 
 .product-tile .media {
+  position: relative;
   background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
   border-bottom: 1px solid #f0f0f0;
   overflow: hidden;
@@ -1152,6 +1156,27 @@ main {
   flex: 0 0 auto;
 }
 
+.spinner--lg {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-width: 3px;
+}
+
+.boot-loader {
+  min-height: 50vh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.85rem;
+  padding: 2rem 1rem;
+}
+
+.boot-loader-label {
+  margin: 0;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
 .empty-state {
   padding: 1.5rem 0.5rem 1.75rem;
   text-align: center;
@@ -1167,6 +1192,12 @@ main {
   margin: 0;
 }
 
+.shelf--loading .shelf-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
 .skeleton-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -1175,9 +1206,14 @@ main {
 
 .skeleton-block,
 .skeleton-line {
-  background: linear-gradient(90deg, #e4e7e7 0%, #f3f5f5 45%, #e4e7e7 90%);
-  background-size: 200% 100%;
-  animation: shimmer 1.25s linear infinite;
+  background: linear-gradient(
+    90deg,
+    #dfe3e3 0%,
+    #f4f6f6 42%,
+    #dfe3e3 84%
+  );
+  background-size: 220% 100%;
+  animation: shimmer 1.35s ease-in-out infinite;
   border-radius: var(--radius-sm);
 }
 
@@ -1223,6 +1259,32 @@ main {
   margin-top: 0.2rem;
 }
 
+.skeleton-line--title {
+  width: 42%;
+  height: 1.15rem;
+}
+
+.skeleton-line--breadcrumb {
+  width: 12rem;
+  height: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.product-tile .media.is-loading img {
+  opacity: 0;
+}
+
+.product-tile .media.is-ready img {
+  opacity: 1;
+  transition: opacity var(--dur) var(--ease-soft);
+}
+
+.media-skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+}
+
 .skeleton-pdp {
   display: grid;
   grid-template-columns: 1fr;
@@ -1237,6 +1299,7 @@ main {
 
 .skeleton-pdp-media {
   min-height: 320px;
+  border-radius: var(--radius);
 }
 
 .skeleton-pdp-info {
@@ -1251,8 +1314,43 @@ main {
   margin-top: 0.5rem;
 }
 
+.skeleton-pdp-panel {
+  height: 7rem;
+  margin-top: 0.35rem;
+}
+
 .skeleton-pdp-buy {
   min-height: 260px;
+  border-radius: var(--radius);
+}
+
+.skeleton-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.35rem 0;
+}
+
+.skeleton-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.skeleton-suggestion-thumb {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 4px;
+}
+
+.skeleton-suggestion-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
 }
 
 /* ——— Footer ——— */

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { apiGet } from '../api/client';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import type { PagedResult, Product } from '../types';
+import { SkeletonSuggestions } from './Status';
 
 const SUGGESTION_LIMIT = 6;
 
@@ -170,9 +171,7 @@ export function SearchBar({
 
       {showPanel && (
         <div className="search-suggestions" id={listId} role="listbox" aria-label="Search suggestions">
-          {loading && matches.length === 0 && (
-            <p className="search-suggestions-status">Searching…</p>
-          )}
+          {loading && matches.length === 0 && <SkeletonSuggestions />}
           {!loading && fetchError && (
             <p className="search-suggestions-status search-suggestions-status--error">
               {fetchError}

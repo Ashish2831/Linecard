@@ -60,7 +60,7 @@ export function SearchPage() {
         )}
       </header>
 
-      {loading && <Loading label="Searching…" />}
+      {loading && <Loading label="Searching…" variant="search" />}
       {error && <ErrorText message={error} />}
       {!loading && !error && products.length === 0 && (
         <Empty label="No products match that search. Try another term." />

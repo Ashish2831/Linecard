@@ -47,9 +47,9 @@ export function CategoryPage() {
         <p className="muted">Shop top-rated picks and more from this department</p>
       </header>
 
-      {loading && <Loading label="Loading category…" />}
+      {loading && <Loading label="Loading category…" variant="category" />}
       {error && <ErrorText message={error} />}
-      {data && (
+      {!loading && data && (
         <>
           <section className="shelf">
             <div className="shelf-head">
